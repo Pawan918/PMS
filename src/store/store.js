@@ -6,16 +6,12 @@ import { createStore } from 'vuex'
 const store = createStore({
   state () {
     return {
-      username : '',
-      password : "",
+      userDetails : {},
     }
   },
   mutations: {
-    setUsername (state) {
-      state.username = ''
-    },
-    setPassword (state){
-        state.password = ''
+    setUserDetails (state,userDetails) {
+      state.userDetails  = userDetails
     }
   },
   actions : {
@@ -28,9 +24,8 @@ const store = createStore({
                 password : User.password
             }
         })
-        await commit('setUsername',User.username);
-        await commit('setPassword',User.password)
-        console.log(data)
+
+        await commit('setUserDetails',data.data)
 
     }
   }
