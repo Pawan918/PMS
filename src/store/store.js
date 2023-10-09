@@ -11,11 +11,11 @@ const store = createStore({
     }
   },
   mutations: {
-    setUsername (state) {
-      state.username = ''
+    setUsername (state,username) {
+      state.username = username
     },
-    setPassword (state){
-        state.password = ''
+    setPassword (state,password){
+        state.password = password
     }
   },
   actions : {
