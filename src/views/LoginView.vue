@@ -50,7 +50,7 @@ export default {
   },
   computed : {
     login(){
-      return this.$route.name === 'login' ? true : false
+      return this.$route.name === 'login'
     }
   },
   methods : {
