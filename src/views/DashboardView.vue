@@ -3,13 +3,10 @@
     <h1>This is an Dashbord Page</h1>
   </div>
 </template>
+<script>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+export default {
+    name: 'dashboardTemp',
 }
-</style>
+</script>
+
