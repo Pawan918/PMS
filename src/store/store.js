@@ -2,14 +2,23 @@
 import axios from 'axios'
 import { createStore } from 'vuex'
 import jwtDecode from 'jwt-decode'
+import ProductStore from './productStore'
 
 // Create a new store instance.
 const store = createStore({
+  modules : {
+    product : ProductStore
+  },
   state () {
     return {
       userDetails : {},
       loggedIn : false
     }
+  },
+  getters : {
+    getUserDetails(state){
+      return JSON.parse(state.userDetails)
+    },
   },
   mutations: {
     setUserDetails (state,userDetails) {
@@ -33,13 +42,13 @@ const store = createStore({
         })
         const decoded = JSON.stringify(jwtDecode(data.data.token))
         localStorage.setItem('userData',decoded)
-        commit('setUserDetails',decoded)
+        commit('setUserDetails',JSON.stringify(decoded))
 
     },
     async autoAuth({commit}){
       let userData =  localStorage.getItem('userData');
       if(userData){
-          commit('setUserDetails',JSON.parse(userData))
+          commit('setUserDetails',JSON.stringify(userData))
       }
     },
     async Logout({commit}){
