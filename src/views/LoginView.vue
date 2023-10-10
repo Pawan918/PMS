@@ -48,9 +48,19 @@ export default {
       // login : true
     }
   },
+  watch : {
+    isLogged(newState,oldState){
+      if(newState){
+        this.$router.push('/dashboard')
+      }
+    }
+  },
   computed : {
     login(){
       return this.$route.name === 'login'
+    },
+    isLogged(){
+      return this.$store.state.loggedIn
     }
   },
   methods : {
@@ -72,6 +82,7 @@ export default {
         }
         )
       }
+      this.$router.push('/dashboard')
       }
   }
 }
