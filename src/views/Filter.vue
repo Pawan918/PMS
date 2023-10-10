@@ -24,13 +24,14 @@ export default {
     data(){
         return {
             category : null,
-            pageNumber : 1,
+            pageNumber : 0,
         }
     },
     mounted() {
         if(this.$route.query){
             this.category = this.$route.query.category;
-            this.pageNumber = this.$route.query.pageNumber;
+            if(this.$route.query.pageNumber) this.pageNumber = this.$route.query.pageNumber;
+            else this.pageNumber = 0
             this.$store.dispatch('product/getAllProductData',`https://dummyjson.com/products/category/${this.category}?skip=${this.pageNumber}&limit=0`);
         }
         this.$store.dispatch('product/getProductCategories');
@@ -44,7 +45,7 @@ export default {
         dataSend(){
             if(this.category !== null){
                 this.$store.dispatch('product/getAllProductData',`https://dummyjson.com/products/category/${this.category}?skip=${this.pageNumber}&limit=0`);
-                this.$router.push({path : '/dashboard/filter',query : {category : this.category,pageNumber:this.pageNumber}})
+                this.$router.push({path : '/store',query : {category : this.category,pageNumber:this.pageNumber}})
             }
         },
         filterHandler(){

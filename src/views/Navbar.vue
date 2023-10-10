@@ -35,8 +35,8 @@ export default{
     },
     methods : {
         logoutHandler(){
-            this.$router.push('/login')
             this.$store.dispatch('Logout')
+            this.$router.push('/login')
         }
     }
 }

@@ -17,14 +17,14 @@
 import { mapGetters } from 'vuex';
 export default {
 
-    name: "productCardTemp",
+    name: "productCardsTemp",
     data() {
         return {
             data: {}
         }
     },
     mounted() {
-        if(this.$route.name === 'dashboard'){
+        if(this.$route.name !== 'store'){
             console.log('mounted')
             this.$store.dispatch('product/getAllProductData',`https://dummyjson.com/products?limit=15`);
         }

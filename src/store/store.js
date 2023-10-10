@@ -4,7 +4,6 @@ import { createStore } from 'vuex'
 import jwtDecode from 'jwt-decode'
 import ProductStore from './productStore'
 
-// Create a new store instance.
 const store = createStore({
   modules : {
     product : ProductStore
