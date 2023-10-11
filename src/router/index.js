@@ -34,7 +34,11 @@ const router = createRouter({
 
 router.beforeEach((to,from,next)=>{
   const data = JSON.parse(localStorage.getItem('userData'))
-  if(!data && to.path === '/dashboard'){
+  // if()
+  if(to.path === '/' && !data){
+    next('/login')
+  }
+  else if(!data && to.path === '/dashboard'){
     next('/login')
   }else if(data && to.path === '/login'){
     next('/dashboard')
