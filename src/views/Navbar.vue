@@ -5,8 +5,8 @@
             <div class="flex items-center gap-4 relative">
                 <div v-if="isLoggedIn">{{ firstName }}</div>
                 <div v-else>Login</div>
-                <font-awesome-icon :icon="['fas', 'circle-user']" class="text-2xl cursor-pointer p-4" @click="()=>isLogout=!isLogout"/>
-                <div v-show="isLogout" class="absolute right-2 top-12 bg-[black] w-20 h-16 z-[99]">
+                <font-awesome-icon :icon="['fas', 'circle-user']" class="text-2xl cursor-pointer p-4" @click="()=>isLogout=!isLogout" v-show="isLoggedIn"/>
+                <div v-show="isLogout && isLoggedIn" class="absolute right-2 top-12 bg-[black] w-20 h-16 z-[99]">
                     <div class="flex p-[2px] justify-center cursor-pointer bg-[red]  m-2" @click.prevent="logoutHandler">
                         Logout
                     </div>

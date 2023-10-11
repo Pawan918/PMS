@@ -5,6 +5,10 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path : '/',
+      redirect: '/login',
+    },
+    {
       path: '/login',
       name: 'login',
       component: LoginView
@@ -34,11 +38,7 @@ const router = createRouter({
 
 router.beforeEach((to,from,next)=>{
   const data = JSON.parse(localStorage.getItem('userData'))
-  // if()
-  if(to.path === '/' && !data){
-    next('/login')
-  }
-  else if(!data && to.path === '/dashboard'){
+ if(!data && to.path === '/dashboard'){
     next('/login')
   }else if(data && to.path === '/login'){
     next('/dashboard')
