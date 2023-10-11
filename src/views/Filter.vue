@@ -32,10 +32,13 @@ export default {
         if(this.$route.query){
             this.category = this.$route.query.category;
             if(this.$route.query.pageNumber) this.pageNumber = this.$route.query.pageNumber;
-            else this.pageNumber = 0
-            this.$store.dispatch('product/getAllProductData',`https://dummyjson.com/products/category/${this.category}?skip=${this.pageNumber}&limit=0`);
+            else this.pageNumber = 0;
+                this.$store.dispatch('product/getAllProductData',`https://dummyjson.com/products/category/${this.category}?skip=${this.pageNumber}&limit=0`);
+
         }
-        this.$store.dispatch('product/getProductCategories');
+        this.category = 'select';
+            this.$store.dispatch('product/getProductCategories');
+
     },
     computed : {
         categoriesData(){
@@ -44,7 +47,7 @@ export default {
     },
     methods : {
         dataSend(){
-            if(this.category !== null){
+            if(this.category !== null && this.category !== 'select'){
                 this.$store.dispatch('product/getAllProductData',`https://dummyjson.com/products/category/${this.category}?skip=${this.pageNumber}&limit=0`);
                 this.$router.push({path : '/store',query : {category : this.category,pageNumber:this.pageNumber}})
             }
