@@ -15,7 +15,7 @@
                     <button class="p-2 flex justify-center items-center gap-2 bg-red-700 hover:bg-red-600 cursor-pointer rounded-md">
                         <font-awesome-icon :icon="['fas', 'indian-rupee-sign']" class=""/> <span>Buy Now</span>
                     </button>
-                     <button class="p-2 flex justify-center items-center gap-2 bg-red-700 hover:bg-red-600 cursor-pointer rounded-md">
+                     <button class="p-2 flex justify-center items-center gap-2 bg-red-700 hover:bg-red-600 cursor-pointer rounded-md" @click="cartHandler">
                         <font-awesome-icon :icon="['fas', 'cart-shopping']" class=""/> <span>Add To Cart</span>
                     </button>
                 </div>
@@ -41,6 +41,11 @@ export default{
     },
     components : {
         ProductCards
+    },
+    methods:{
+        cartHandler(){
+            console.log('cart is Handled')
+        }
     }
 }
 </script>
