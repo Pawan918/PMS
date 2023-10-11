@@ -37,6 +37,8 @@ router.beforeEach((to,from,next)=>{
   // if()
   if(to.path === '/' && !data){
     next('/login')
+  }else if(to.path === '/' && data){
+    next('/dashboard')
   }
   else if(!data && to.path === '/dashboard'){
     next('/login')
