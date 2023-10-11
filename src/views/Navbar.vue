@@ -1,7 +1,7 @@
 <template>
     <div class="w-full h-16 bg- flex bg-[#586F6B]">
         <div class="flex justify-between items-center h-full w-full mx-10">
-            <div class=""><img src="./../assets/Logo.svg" class="w-[80px] h-[70px] text-slate-50"/></div>
+            <div class=""><img src="./../assets/logo.svg" class="w-[80px] h-[70px] text-slate-50"/></div>
             <div class="flex items-center gap-4 relative">
                 <div v-if="isLoggedIn">{{ firstName }}</div>
                 <div v-else>Login</div>
