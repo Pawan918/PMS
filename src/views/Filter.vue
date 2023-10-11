@@ -2,7 +2,7 @@
     <div class="flex flex-col mb-4 gap-2">
         <div class="h-10 flex justify-between w-full z-50">
             <div class="">
-                <select v-model="category" name="categories" class="bg-zinc-800 p-1">
+                <select v-model="category" @change='filterHandler' name="categories" class="bg-zinc-800 p-1">
                     <option value="select">--Select--</option>
                     <option :value="categories" v-for="(categories,index) in categoriesData" :key="index">{{ categories }}</option>
                 </select>
@@ -18,13 +18,6 @@
 <script>
 export default {
     name: 'filterTemp',
-    watch : {
-        category(oldValue,newValue){
-            if(oldValue !== newValue ){
-                this.dataSend()
-            }
-        }
-    },
     data(){
         return {
             category : 'select',
@@ -32,14 +25,15 @@ export default {
         }
     },
     mounted() {
-        if(this.$route.query){
+        if(this.$route.query.category){
             this.category = this.$route.query.category;
             if(this.$route.query.pageNumber) this.pageNumber = this.$route.query.pageNumber;
             else this.pageNumber = 0;
                 this.$store.dispatch('product/getAllProductData',`https://dummyjson.com/products/category/${this.category}?skip=${this.pageNumber}&limit=0`);
 
+        }else{
+            this.category = 'select'
         }
-        this.category = 'select';
             this.$store.dispatch('product/getProductCategories');
 
     },
