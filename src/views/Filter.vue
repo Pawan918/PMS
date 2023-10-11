@@ -7,10 +7,6 @@
                     <option :value="categories" v-for="(categories,index) in categoriesData" :key="index">{{ categories }}</option>
                 </select>
             </div>
-            <div class="">
-                <button class="bg-zinc-800 p-2" @click="filterHandler">Filter</button>
-            </div>
-            <!-- <div class="">{{ this.$route.query }}</div> -->
         </div>
         <div class="flex justify-between h-10">
                 <font-awesome-icon :icon="['fas', 'arrow-left']" class="text-2xl p-2" @click="leftClickHandler"/>
@@ -22,6 +18,13 @@
 <script>
 export default {
     name: 'filterTemp',
+    watch : {
+        category(oldValue,newValue){
+            if(oldValue !== newValue ){
+                this.dataSend()
+            }
+        }
+    },
     data(){
         return {
             category : 'select',
