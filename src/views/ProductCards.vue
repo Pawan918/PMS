@@ -14,19 +14,18 @@
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
 export default {
 
     name: "productCardsTemp",
-    data() {
-        return {
-            data: {}
-        }
-    },
+    props : ['url'],
     mounted() {
-        if(this.$route.name !== 'store'){
-            console.log('mounted')
+        // console.log(this.url)
+        if(this.$route.name !== 'store' && this.$route.name !== 'productDetails'){
             this.$store.dispatch('product/getAllProductData',`https://dummyjson.com/products?limit=15`);
+        }else if(this.$route.name === 'productDetails'){
+            setTimeout(()=>{
+                this.$store.dispatch('product/getAllProductData',this.url)
+            },500)
         }
     },
     computed: {
@@ -36,7 +35,7 @@ export default {
     },
     methods: {
         cardHandle(product){
-            console.log(product)
+            this.$router.push(`/details/${product}`)
         }
     }
 }

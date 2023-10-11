@@ -5,6 +5,7 @@ const ProductStore = {
         return{
             productData : {},
             productCategories : {},
+            productDetails : {},
         }
     },
     mutations : {
@@ -14,6 +15,9 @@ const ProductStore = {
         setProductCategories(state,data){
             state.productCategories = data
         },
+        setProductDetails(state,data){
+            state.productDetails = data
+        }
     },
     getters : {
         getAllProductData(state){
@@ -21,6 +25,12 @@ const ProductStore = {
         },
         getProductCategories(state){
             return state.productCategories
+        },
+        getProductData(state){
+            return state.productData
+        },
+        getProductDetails(state){
+            return state.productDetails
         }
     },
     actions : {
@@ -38,6 +48,13 @@ const ProductStore = {
                 url : 'https://dummyjson.com/products/categories'
             });
             commit('setProductCategories',data.data)
+        },
+        async getProductDetails({commit},url){
+            const data = await axios({
+                method : 'get',
+                url,
+            });
+            commit('setProductDetails',data.data)
         }
         
     }

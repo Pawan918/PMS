@@ -3,6 +3,7 @@
         <div class="h-10 flex justify-between w-full z-50">
             <div class="">
                 <select v-model="category" name="categories" class="bg-zinc-800 p-1">
+                    <option value="select">--Select--</option>
                     <option :value="categories" v-for="(categories,index) in categoriesData" :key="index">{{ categories }}</option>
                 </select>
             </div>
@@ -23,7 +24,7 @@ export default {
     name: 'filterTemp',
     data(){
         return {
-            category : null,
+            category : 'select',
             pageNumber : 0,
         }
     },
